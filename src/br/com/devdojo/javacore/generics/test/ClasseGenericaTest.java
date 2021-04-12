@@ -14,19 +14,20 @@ public class ClasseGenericaTest {
         carrosDisponiveis.add(new Carro("BMW"));
 
         ObjetosAlugaveis<Carro> carroAlugavel = new ObjetosAlugaveis<>(carrosDisponiveis);
-        Carro objetoDispovel = carroAlugavel.getObjetoDispovel();
+        Carro carroAlugado = carroAlugavel.getObjetoDispovel();
         System.out.println("Após uso de 45 dias.");
-        carroAlugavel.devolverObjeto(objetoDispovel);
+        carroAlugavel.devolverObjeto(carroAlugado);
 
         System.out.println("----------------------------------");
 
         List<Computador> comtadoresDisponiveis = new ArrayList<>();
         comtadoresDisponiveis.add(new Computador("Intel"));
         comtadoresDisponiveis.add(new Computador("AMD"));
+
         ObjetosAlugaveis<Computador> computadorObjetosAlugaveis = new ObjetosAlugaveis<>(comtadoresDisponiveis);
-        Computador comp = computadorObjetosAlugaveis.getObjetoDispovel();
+        Computador computadorAlugado = computadorObjetosAlugaveis.getObjetoDispovel();
         System.out.println("Após utilização.");
-        computadorObjetosAlugaveis.devolverObjeto(comp);
+        computadorObjetosAlugaveis.devolverObjeto(computadorAlugado);
 
     }
 }
