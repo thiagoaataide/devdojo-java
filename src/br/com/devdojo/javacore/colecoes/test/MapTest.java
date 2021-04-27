@@ -11,10 +11,24 @@ public class MapTest {
         map.put("vc","você");
         map.put("meza","mesa");
 
-//        for(String key : map.values()){
-//            System.out.println(key);
-//        }
+        /**
+         * Percorrer valores
+         * */
 
+        for(String key : map.values()){
+            System.out.println(key);
+        }
+
+        /**
+         * Percorrer chaves
+         * */
+        for(String key : map.keySet()){
+            System.out.println(key);
+        }
+
+        /**
+         * Percorrer com Chave e Valor
+         * */
         for(Map.Entry<String,String> entry : map.entrySet()){
             System.out.println("Chave: " + entry.getKey() + " "+ "Valor: " + entry.getValue());
         }
