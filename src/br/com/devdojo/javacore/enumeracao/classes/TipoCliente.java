@@ -6,7 +6,8 @@ public enum TipoCliente {
         public String getId(){
          return "C";
         }
-    },PESSOA_JURIDICA(2,"Pessoa Jurídica");
+    },
+    PESSOA_JURIDICA(2,"Pessoa Jurídica");
 
     private int tipo;
     private String nomeTipo;
