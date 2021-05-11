@@ -2,14 +2,15 @@ package br.com.devdojo.javacore.jdbc.test;
 
 import br.com.devdojo.javacore.jdbc.classes.Carro;
 import br.com.devdojo.javacore.jdbc.classes.Comprador;
-import br.com.devdojo.javacore.jdbc.db.CarroDAO;
-import br.com.devdojo.javacore.jdbc.db.CompradorDAO;
+import br.com.devdojo.javacore.jdbc.db.CarroDAOImpl;
+import br.com.devdojo.javacore.jdbc.interfaces.CarroDAO;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class CarroCRUD {
     private static Scanner teclado = new Scanner(System.in);
+    private static CarroDAO dao = new CarroDAOImpl();
 
     public static void executar(int op) {
         switch (op) {
@@ -42,7 +43,7 @@ public class CarroCRUD {
         List<Comprador> compradorList = CompradorCRUD.getLista();
         c.setComprador(compradorList.get(Integer.parseInt(teclado.nextLine())));
 
-        CarroDAO.save(c);
+        dao.save(c);
     }
 
     private static void deletar() {
@@ -53,7 +54,7 @@ public class CarroCRUD {
         String op = teclado.nextLine();
 
         if (op.startsWith("s")) {
-            CarroDAO.delete(c);
+            dao.delete(c);
         }
     }
 
@@ -74,11 +75,11 @@ public class CarroCRUD {
             c.setPlaca(placa);
         }
 
-        CarroDAO.update(c);
+        dao.update(c);
     }
 
     private static List<Carro> listar() {
-        List<Carro> carroListList = CarroDAO.selectAll();
+        List<Carro> carroListList = dao.selectAll();
         for (int i = 0; i < carroListList.size(); i++) {
             Carro c = carroListList.get(i);
             System.out.println("[" + i + "] " + c.getNome() + " - " + c.getPlaca() + " - " + c.getComprador().getNome());
@@ -88,7 +89,7 @@ public class CarroCRUD {
     }
 
     private static void listarPorNome(String nome) {
-        List<Carro> carroList = CarroDAO.searchByName(nome);
+        List<Carro> carroList = dao.searchByName(nome);
         for (int i = 0; i < carroList.size(); i++) {
             Carro c = carroList.get(i);
             System.out.println("[" + i + "] " + c.getNome() + " - " + c.getPlaca() + " - " + c.getComprador().getNome());

@@ -3,6 +3,7 @@ package br.com.devdojo.javacore.jdbc.db;
 import br.com.devdojo.javacore.jdbc.classes.Carro;
 import br.com.devdojo.javacore.jdbc.classes.Comprador;
 import br.com.devdojo.javacore.jdbc.conn.ConexaoFactory;
+import br.com.devdojo.javacore.jdbc.interfaces.CarroDAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,12 +12,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarroDAO {
+public class CarroDAOImpl implements CarroDAO {
 
     /**
      * Inserir registro em uma tabela
      */
-    public static void save(Carro carro) {
+    @Override
+    public void save(Carro carro) {
         String sql = "INSERT INTO `agencia`.`carro` (`nome`, `placa`, `compradorid`) VALUES (?, ?, ?)";
 
 
@@ -37,7 +39,8 @@ public class CarroDAO {
     /**
      * Remover registro de uma tabela
      */
-    public static void delete(Carro carro) {
+    @Override
+    public void delete(Carro carro) {
         if (carro == null || carro.getId() == null) {
             System.out.println("Não foi possível excluir o registro");
             return;
@@ -59,7 +62,8 @@ public class CarroDAO {
     /**
      * Realizar uma atualização em um registro no banco
      */
-    public static void update(Carro carro) {
+    @Override
+    public void update(Carro carro) {
         if (carro == null || carro.getId() == null) {
             System.out.println("Não foi possível atualizar o registro");
             return;
@@ -83,7 +87,8 @@ public class CarroDAO {
     /**
      * Buscar todos os registros de uma tabela
      */
-    public static List<Carro> selectAll() {
+    @Override
+    public  List<Carro> selectAll() {
         String sql = "SELECT id, placa, nome, compradorid FROM agencia.carro";
         List<Carro> carroList = new ArrayList<>();
 
@@ -111,7 +116,8 @@ public class CarroDAO {
      * <p>
      * Aqui também foi implementado o try-with-resourses para melhor gerenciar os recursos.
      */
-    public static List<Carro> searchByName(String nome) {
+    @Override
+    public List<Carro> searchByName(String nome) {
         String sql = "SELECT id, nome, placa, compradorid FROM agencia.carro WHERE nome LIKE ?";
         List<Carro> compradorList = new ArrayList<>();
 
