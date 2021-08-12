@@ -1,2 +1,3 @@
 Escrevendo uma mensagem no arquivo
 E pulando uma linha
+Testando Git com autenticação SSH
