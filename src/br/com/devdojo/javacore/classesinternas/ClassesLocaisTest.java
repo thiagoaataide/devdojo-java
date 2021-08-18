@@ -19,10 +19,10 @@ package br.com.devdojo.javacore.classesinternas;
  *
  *  - Na declaração de um atributo dentro do método local, para o Java 7, o atributo deve ser declarado como o
  *    modificador "final"; Isso porque os atributos de um método deixam de existir na tabela HEAP após a sua execução.
- *    No entanto para a classe interna, o atributo pode ainda ser necessário e se acionado não existiria mais em memoria.
+ *    No entanto, para a classe interna, o atributo pode ainda ser necessário e se acionado não existiria mais em memória.
+ *    Então se precisarmos criar atributos locais para o método, é preciso explicitar que o mesmo é final.
  *
- *    Então se precisarmos criar atributos locais para o método, é preciso explicitar que o mesmo é final. No Java 8,
- *    houve uma mudança nessa regra, não é necessário explicitar o modificador final pois o atributo declarado é
+ *    No Java 8, houve uma mudança nessa regra, não é necessário explicitar o modificador final, pois o atributo declarado é
  *    considerado efetivamente final. No entanto, se houver a necessidade de modificar o valor do atributo teremos um
  *    erro de compilação.
  */
@@ -31,7 +31,15 @@ public class ClassesLocaisTest {
     private String nome = "Thiago";
 
     public void fazAlgumaCoisa() {
+//        String sobrenome = "Alberto";
+        /**
+         * A linha abaixo resultaria em erro, pois como descrito acima, no Java 8 um atributo de métodos que
+         * contenham uma classe interna precisam ser final ou efetivamente final. E por consequência não podem
+         * sofrer alterações.
+         * */
+//        sobrenome = "outro nome";
         class Interna {
+
             public void imprimeNomeExterno() {
                 System.out.println(nome);
             }
@@ -39,6 +47,7 @@ public class ClassesLocaisTest {
 
         Interna in = new Interna();
         in.imprimeNomeExterno();
+
     }
 
     public static void main(String[] args) {

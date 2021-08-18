@@ -4,7 +4,7 @@ package br.com.devdojo.javacore.classesinternas;
  * Classes internas
  *
  * Anotações:
- * - Para ter uma classe interna, basta criar um classe dentro do escopo de outra classe.
+ * - Para ter uma classe interna, basta criar uma classe dentro de um escopo de outra classe.
  * - A Classe interna tem acesso a todos os atributos da classe externa.
  * - Para acessar a classe interna, primeiramente devemos ter um objeto da clase externa.
  * - Para utilização do this, o mesmo faz referência ao objeto da classe de onde está sendo chamado.
@@ -22,8 +22,8 @@ public class ClassesInternasTest {
     }
 
     public static void main(String[] args) {
-        ClassesInternasTest extena = new ClassesInternasTest(); //criando objeto da class externa.
-        ClassesInternasTest.Interna interna = extena.new Interna(); //criando objeto da classe interna.
+        ClassesInternasTest externa = new ClassesInternasTest(); //criando objeto da class externa.
+        ClassesInternasTest.Interna interna = externa.new Interna(); //criando objeto da classe interna.
         ClassesInternasTest.Interna interna2 = new ClassesInternasTest().new Interna(); //criando objeto da classe interna.
         interna.verClasseExterna(); //executando o método dentro da class interna.
         interna2.verClasseExterna(); //executando o método dentro da class interna.
