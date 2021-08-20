@@ -25,7 +25,7 @@ public class People {
         new People("Thor", 23, 1980),
         new People("Hulk", 35, 8000),
         new People("Flash", 29, 3200),
-        new People("Batman", 37, 10000000),
+        new People("Batman", 37, 10000),
         new People("Laterna Verde", 24, 5000));
     }
 
