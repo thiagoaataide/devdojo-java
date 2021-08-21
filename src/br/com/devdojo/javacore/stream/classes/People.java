@@ -9,6 +9,7 @@ public class People {
     private String name;
     private int age;
     private double salary;
+    private Genero genero;
 
     public People(String name, int age, double salary) {
         this.name = name;
@@ -16,17 +17,24 @@ public class People {
         this.salary = salary;
     }
 
+    public People(String name, int age, double salary, Genero genero) {
+        this.name = name;
+        this.age = age;
+        this.salary = salary;
+        this.genero = genero;
+    }
+
     public static List<People> dbOfPeople() {
         return asList(
-                new People("Thiago", 32, 2000),
-        new People("Mercy", 22, 3500),
-        new People("Mercy", 22, 3500),
-        new People("Ana", 19, 1895),
-        new People("Thor", 23, 1980),
-        new People("Hulk", 35, 8000),
-        new People("Flash", 29, 3200),
-        new People("Batman", 37, 10000),
-        new People("Laterna Verde", 24, 5000));
+                new People("Thiago", 32, 2000, Genero.MASCULINO),
+        new People("Mercy", 22, 3500, Genero.FEMININO),
+        new People("Mercy", 22, 3500, Genero.FEMININO),
+        new People("Ana", 17, 1895, Genero.FEMININO),
+        new People("Thor", 23, 1980, Genero.MASCULINO),
+        new People("Hulk", 35, 8000, Genero.MASCULINO),
+        new People("Flash", 29, 3200, Genero.MASCULINO),
+        new People("Batman", 37, 10000, Genero.MASCULINO),
+        new People("Laterna Verde", 16, 5000, Genero.MASCULINO));
     }
 
     @Override
@@ -64,5 +72,16 @@ public class People {
 
     public void setSalary(double salary) {
         this.salary = salary;
+    }
+
+    public Genero getGenero() {
+        return genero;
+    }
+
+    @Override
+    public String toString() {
+        return "People{" +
+                "name='" + name + '\'' +
+                '}';
     }
 }
